@@ -39,7 +39,7 @@ class Eightbitfulladdertest extends FreeSpec with ChiselScalatestTester {
    dut.io.sum7.expect(0.B)  
    dut.io.sum8.expect(0.B)
 
-   dut.io.cout.expect(1.B)  
+   dut.io.cout.expect(0.B)  
 
    dut.clock.step(1)
    

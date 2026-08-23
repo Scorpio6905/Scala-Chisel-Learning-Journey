@@ -1,5 +1,18 @@
+error id: file://<WORKSPACE>/src/main/scala/Gates/Mux4to1.scala:
+file://<WORKSPACE>/src/main/scala/Gates/Mux4to1.scala
+empty definition using pc, found symbol in pc: 
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+	 -chisel3/chisel3.
+	 -chisel3.
+	 -scala/Predef.chisel3.
+offset: 21
+uri: file://<WORKSPACE>/src/main/scala/Gates/Mux4to1.scala
+text:
+```scala
 package Gates
-import chisel3._
+import @@chisel3._
 import javax.swing.UIManager.LookAndFeelInfo
 
 
@@ -36,3 +49,9 @@ class Mux4to1 extends Module {
 
 
 }       
+```
+
+
+#### Short summary: 
+
+empty definition using pc, found symbol in pc: 
