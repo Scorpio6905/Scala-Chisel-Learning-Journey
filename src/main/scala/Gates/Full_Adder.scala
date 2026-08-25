@@ -18,5 +18,4 @@ class Full_Adder extends Module {
     val and_output1 = io.a & io.b
     val and_output2 = xor_output1 & io.c
     io.cout := and_output1 || and_output2
-    
-    }
+}

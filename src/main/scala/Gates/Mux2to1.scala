@@ -17,4 +17,4 @@ class Mux2to1 extends Module {
     val and_output2 = io.b & io.s1
     io.out := and_output1 || and_output2
     
-    }
+}

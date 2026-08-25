@@ -18,7 +18,6 @@ class Counter ( counterBits : UInt ) extends Module {
     }
     io.result := count(5.U)
 
-
     println (s"counter created with max value $max")
 }
 

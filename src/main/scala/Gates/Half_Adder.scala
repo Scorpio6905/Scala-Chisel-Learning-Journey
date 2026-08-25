@@ -13,4 +13,4 @@ class Half_Adder extends Module {
 
     io.carry_output := io.a & io.b
     io.sum_output := io.a ^ io.b
-}
+}            

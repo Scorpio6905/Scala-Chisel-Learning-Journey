@@ -20,6 +20,4 @@ class counter_up_down(n: Int) extends Module {
         io.out := 0.B
     }
  
-
-// Your code
 }
