@@ -10,8 +10,6 @@ class Eightbitfulladdertest extends FreeSpec with ChiselScalatestTester {
   "dut test" in {
     test(new Eightbitfulladder) { dut =>
 
-
-
    dut.io.a1.poke(0.B)
    dut.io.b1.poke(0.B)
    dut.io.a2.poke(0.B)
