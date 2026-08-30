@@ -54,6 +54,8 @@ class ALU extends Module with Config {
     val shiftl = Reverse(shiftr)   
 
     val out = Wire(UInt(WLEN.W))
+    out := 0.U
+   
     
     switch (io.alu_Op) {
     is (ALU_ADD, ALU_SUB) {
