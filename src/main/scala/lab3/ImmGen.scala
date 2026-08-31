@@ -35,11 +35,11 @@ class ImmdValGen extends Module {
           io.immd_se := Cat(sign_ext, immbits)
         }
 
-        is ("b0110111".U, "b0010111".U) // U-Type
+        is ("b0110111".U, "b0010111".U) { // U-Type
             val immbits = io.instr(31, 12)
-            val bit_ext = Fill(12, "b0")
+            val bit_ext = Fill(12, "b0".U)
             io.immd_se := Cat(immbits, bit_ext)
-
+        }
         is ("b1101111".U) {   // UJ-Type
             val immbits = Cat(
                 io.instr(31,30),
