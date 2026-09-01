@@ -46,7 +46,7 @@ class ImmGentest extends FreeSpec with ChiselScalatestTester {
   // JAL -8
   dut.io.instr.poke("b11111111100111111111000001101111".U)
   dut.io.immd_se.expect("b11111111111111111111111111111000".U)
-
+  
     }
   }
 }

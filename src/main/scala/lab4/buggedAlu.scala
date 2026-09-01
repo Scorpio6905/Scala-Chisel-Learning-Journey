@@ -22,6 +22,7 @@ object ALUOP {
 
 trait Config{
     val WLEN = 32
+    
     val ALUOP_SIG_LEN = 4
 }
 
@@ -35,7 +36,7 @@ class ALUIO extends Bundle with Config {
     val sum = Output(UInt(WLEN.W))
 }
 
-class ALU extends Module with Config {
+class buggedAlu extends Module with Config {
     val io = IO(new ALUIO)
 
     val sum = io.in_A + Mux(io.alu_Op(0), io.in_B, -io.in_B)
@@ -43,18 +44,18 @@ class ALU extends Module with Config {
                 Mux(io.alu_Op(1), io.in_A(WLEN-1), io.in_B(WLEN-1)))
     val shamt = io.in_A(4,0).asUInt
     val shin = Mux(io.alu_Op(3), Reverse(io.in_A), io.in_A)
-    val shiftr = (Cat(io.alu_Op(0) && shin, shin(WLEN-1)).asSInt >> shamt)(WLEN-1,0)
+    val shiftr = (Cat(io.alu_Op(0) && shin(WLEN-1), shin).asSInt >> shamt)(WLEN-1,0)
     val shitfl = Reverse(shiftr)
     val out = 
     Mux(io.alu_Op === ALU_ADD || io.alu_Op === ALU_SUB, sum, 
     Mux(io.alu_Op === ALU_SLT || io.alu_Op === ALU_SLTU, cmp, 
-    Mux(io.alu_Op === ALU_SRA || io.alu_Op === ALU_SRL, shiftl,
-    Mux(io.alu_Op === ALU_SLL, shitfr, 
-    Mux(io.alu_Op === ALU_AND, (io.in_A && io.in_B),
+    Mux(io.alu_Op === ALU_SRA || io.alu_Op === ALU_SRL, shiftr,
+    Mux(io.alu_Op === ALU_SLL, shitfl, 
+    Mux(io.alu_Op === ALU_AND, (io.in_A & io.in_B),
     Mux(io.alu_Op === ALU_OR, (io.in_A | io.in_B),
     Mux(io.alu_Op === ALU_XOR, (io.in_A ^ io.in_B),
     Mux(io.alu_Op === ALU_COPY_A, io.in_A, 
-    Mux(io.alu_Op === ALU_COPY_B, io.in_A, 0.U)))))))))
+    Mux(io.alu_Op === ALU_COPY_B, io.in_B, 0.U)))))))))
 
 
     io.out := out
