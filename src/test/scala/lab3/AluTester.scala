@@ -21,7 +21,7 @@ class AluTester extends FreeSpec with ChiselScalatestTester {
     for ( i <- 0 until 100) {
         val src_a = Random.nextLong() & 0xFFFFFFFFL
         val src_b = Random.nextLong() & 0xFFFFFFFFL
-        val opr = Random.nextInt(12)
+        val opr = Random.nextInt(13)
         val aluop = array_op(opr)
         
     // ALU functional implementation using Scala matchval 
@@ -53,7 +53,16 @@ class AluTester extends FreeSpec with ChiselScalatestTester {
         dut.clock.step(1)
         dut.io.out.expect(result1.asUInt)
 }
+
+        val src_a = Random.nextLong() & 0xFFFFFFFFL 
+        val src_b = Random.nextLong() & 0xFFFFFFFFL
+
         dut.clock.step(2)
-}
+        dut.io.in_A.poke(src_a.U) 
+        dut.io.in_B.poke(src_b.U) 
+        dut.io.alu_Op.poke(ALU_XXX) 
+        dut.clock.step(1) 
+        dut.io.out.expect(0.U)
+}       
 }
 }

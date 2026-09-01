@@ -1,3 +1,28 @@
+error id: file://<WORKSPACE>/src/main/scala/lab4/buggedAlu.scala:
+file://<WORKSPACE>/src/main/scala/lab4/buggedAlu.scala
+empty definition using pc, found symbol in pc: 
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+	 -chisel3/ALU_XOR.
+	 -chisel3/ALU_XOR#
+	 -chisel3/ALU_XOR().
+	 -chisel3/util/ALU_XOR.
+	 -chisel3/util/ALU_XOR#
+	 -chisel3/util/ALU_XOR().
+	 -ALUOP.ALU_XOR.
+	 -ALUOP.ALU_XOR#
+	 -ALUOP.ALU_XOR().
+	 -ALU_XOR.
+	 -ALU_XOR#
+	 -ALU_XOR().
+	 -scala/Predef.ALU_XOR.
+	 -scala/Predef.ALU_XOR#
+	 -scala/Predef.ALU_XOR().
+offset: 1603
+uri: file://<WORKSPACE>/src/main/scala/lab4/buggedAlu.scala
+text:
+```scala
 package lab4
 
 import chisel3._ 
@@ -54,7 +79,7 @@ class buggedAlu extends Module with Config {
     Mux(io.alu_Op === ALU_SLL, shitfl, 
     Mux(io.alu_Op === ALU_AND, (io.in_A & io.in_B),
     Mux(io.alu_Op === ALU_OR, (io.in_A | io.in_B),
-    Mux(io.alu_Op === ALU_XOR, (io.in_A ^ io.in_B),
+    Mux(io.alu_Op === @@ALU_XOR, (io.in_A ^ io.in_B),
     Mux(io.alu_Op === ALU_COPY_A, io.in_A, 
     Mux(io.alu_Op === ALU_COPY_B, io.in_B, 0.U)
     ))))))))
@@ -63,3 +88,10 @@ class buggedAlu extends Module with Config {
     io.out := out
     io.sum := sum
 }
+
+```
+
+
+#### Short summary: 
+
+empty definition using pc, found symbol in pc: 
