@@ -71,6 +71,6 @@ class BranchControl extends Module {
     }.otherwise{
         io.br_taken := false.B
     }
-
+    
 }
 

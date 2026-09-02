@@ -17,5 +17,6 @@ class MaskedReadWriteSmem extends Module {
     // Write with mask
     mem.write (io.addr , io.dataIn , io.mask)
     io.dataOut := mem.read(io.addr , io.enable)
-
+    
 }
+

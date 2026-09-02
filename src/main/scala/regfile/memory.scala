@@ -1,10 +1,7 @@
 package regfile
 
-import chisel._
+import chisel3._
 
-
-
-import chisel3 . _
 class IO_Interface extends Bundle {
 // Make an input from a Vector of 4 values
     val data_in = Input(Vec(4 ,(UInt(32.W))))
@@ -30,3 +27,4 @@ class Asynch_Mem extends Module {
 // Asyncronous read from addr location
     io.data_out := memory.read(io.addr)
 }
+

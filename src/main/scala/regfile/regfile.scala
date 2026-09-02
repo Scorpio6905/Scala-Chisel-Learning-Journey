@@ -1,6 +1,6 @@
 package regfile
 
-import chisel._
+import chisel3._
 
 trait Config {
     val XLEN = 32
