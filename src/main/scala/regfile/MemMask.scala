@@ -15,7 +15,9 @@ class MaskedReadWriteSmem extends Module {
     // Create a 32 - bit wide memory that is byte - masked
     val mem = SyncReadMem (1024 , Vec(4 ,UInt(width.W)))
     // Write with mask
-    mem.write (io.addr , io.dataIn , io.mask)
+    when{ io.write === 1.B}{
+        mem.write (io.addr , io.dataIn , io.mask) }
+
     io.dataOut := mem.read(io.addr , io.enable)
     
 }

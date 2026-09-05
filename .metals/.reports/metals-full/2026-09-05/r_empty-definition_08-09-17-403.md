@@ -1,7 +1,24 @@
+error id: file://<WORKSPACE>/src/test/scala/lab4/buggedAlutest.scala:lab4/`<error: <none>>`.
+file://<WORKSPACE>/src/test/scala/lab4/buggedAlutest.scala
+empty definition using pc, found symbol in pc: 
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+	 -chisel3/chisel3.
+	 -chisel3/tester/chisel3.
+	 -chisel3/experimental/BundleLiterals.chisel3.
+	 -chiseltest/experimental/TestOptionBuilder.chisel3.
+	 -ALUOP.chisel3.
+	 -chisel3.
+	 -scala/Predef.chisel3.
+offset: 41
+uri: file://<WORKSPACE>/src/test/scala/lab4/buggedAlutest.scala
+text:
+```scala
 package lab4
 
 import chisel3._
-import chisel3.tester._
+import chi@@sel3.tester._
 import org.scalatest.FreeSpec
 import chisel3.experimental.BundleLiterals._
 
@@ -42,7 +59,7 @@ class buggedAlutest extends FreeSpec with ChiselScalatestTester {
         case ALU_DIV => src_a / src_b */ 
         case _ => 0
 }
-        val result1  = if ( result < 0)
+        val result1 : Long = if ( result < 0)
         ((0xFFFFFFFFL) + result +1) & 0xFFFFFFFFL
         
         else result & 0xFFFFFFFFL
@@ -51,5 +68,22 @@ class buggedAlutest extends FreeSpec with ChiselScalatestTester {
         dut.io.in_B.poke(src_b.U)
         dut.io.alu_Op.poke(aluop)
         dut.clock.step(1)
-        dut.io.out.expect(result1.asUInt)  
-}}}}
+        dut.io.out.expect(result1.asUInt)
+
+        // dut.io.in_A.poke(-3.S)
+        // dut.io.in_B.poke(-45.S)
+        // dut.io.alu_Op.poke(ALU_SUB)
+        // dut.clock.step(1)
+        // dut.io.out.expect(-48.asUInt)
+}
+}
+      
+}
+}
+
+```
+
+
+#### Short summary: 
+
+empty definition using pc, found symbol in pc: 

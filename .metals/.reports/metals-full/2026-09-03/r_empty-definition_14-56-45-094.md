@@ -1,3 +1,22 @@
+error id: file://<WORKSPACE>/src/main/scala/regfile/regfile.scala:`<error>`#`<error>`.
+file://<WORKSPACE>/src/main/scala/regfile/regfile.scala
+empty definition using pc, found symbol in pc: 
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+	 -chisel3/when.
+	 -chisel3/when#
+	 -chisel3/when().
+	 -when.
+	 -when#
+	 -when().
+	 -scala/Predef.when.
+	 -scala/Predef.when#
+	 -scala/Predef.when().
+offset: 635
+uri: file://<WORKSPACE>/src/main/scala/regfile/regfile.scala
+text:
+```scala
 package regfile
 
 import chisel3._
@@ -21,10 +40,17 @@ class RegFile extends Module with Config{
 
     val io = IO ( new RegFileIO )
     val regs = Reg (Vec(32 , UInt(XLEN.W)))
-    regs(8) := 80.U
+    regs(8) = 80.U
     io.rdata1 := Mux((io.raddr1.orR ) , regs(io.raddr1) , 0.U )
     io.rdata2 := Mux((io.raddr2.orR ) , regs(io.raddr2) , 0.U )
-    when (io.wen & io.waddr.orR) {
+    w@@hen (io.wen & io.waddr.orR) {
         regs (io.waddr) := io.wdata   
     }
 }
+
+```
+
+
+#### Short summary: 
+
+empty definition using pc, found symbol in pc: 

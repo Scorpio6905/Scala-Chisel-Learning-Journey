@@ -6,19 +6,26 @@ import chisel3.util._
 import chisel3.util.experimental.loadMemoryFromFile
 import scala.io.Source
 
-object Generate_ProcessorTile extends App {
-    var initFile = "src/test/resources/main.txt"
 
-    chisel3.Driver.execute(args , () => new ProcessorTile ( initFile ))
+trait CONFIG {
+    val WLEN = 32
+    val INST_MEM_LEN = 1024
+
 }
 
-class InstMemIO extends Bundle with Config{
+// object Generate_ProcessorTile extends App {
+//     var initFile = "src/test/resources/main.txt"
+
+//     chisel3.Driver.execute(args , () => new InstMem( initFile ))
+// }
+
+class InstMemIO extends Bundle with CONFIG{
     val addr = Input (UInt(WLEN.W))
     val inst = Output (UInt(WLEN.W))
 
 }
 
-class InstMem ( initFile : String ) extends Module with Config {
+class InstMem ( initFile : String ) extends Module with CONFIG {
     val io = IO (new InstMemIO)
 
     // INST_MEM_LEN in Bytes or INST_MEM_LEN / 4 in words

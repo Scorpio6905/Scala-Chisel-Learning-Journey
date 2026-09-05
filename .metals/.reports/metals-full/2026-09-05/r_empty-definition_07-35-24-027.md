@@ -1,3 +1,20 @@
+error id: file://<WORKSPACE>/src/test/scala/lab4/buggedAlutest.scala:`<error>`#`<error>`.
+file://<WORKSPACE>/src/test/scala/lab4/buggedAlutest.scala
+empty definition using pc, found symbol in pc: 
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+	 -chisel3/dut/io.
+	 -chisel3/tester/dut/io.
+	 -chisel3/experimental/BundleLiterals.dut.io.
+	 -chiseltest/experimental/TestOptionBuilder.dut.io.
+	 -ALUOP.dut.io.
+	 -dut/io.
+	 -scala/Predef.dut.io.
+offset: 1750
+uri: file://<WORKSPACE>/src/test/scala/lab4/buggedAlutest.scala
+text:
+```scala
 package lab4
 
 import chisel3._
@@ -42,14 +59,24 @@ class buggedAlutest extends FreeSpec with ChiselScalatestTester {
         case ALU_DIV => src_a / src_b */ 
         case _ => 0
 }
-        val result1  = if ( result < 0)
-        ((0xFFFFFFFFL) + result +1) & 0xFFFFFFFFL
+        // val result1 : Long = //if ( result < 0)
+        //((0xFFFFFFFFL) + result +1) & 0xFFFFFFFFL
         
-        else result & 0xFFFFFFFFL
+         result & 0xFFFFFFFFL
 
-        dut.io.in_A.poke(src_a.U)
+        dut.i@@o.in_A.poke(src_a.U)
         dut.io.in_B.poke(src_b.U)
         dut.io.alu_Op.poke(aluop)
         dut.clock.step(1)
-        dut.io.out.expect(result1.asUInt)  
-}}}}
+        dut.io.out.expect(result1.asUInt)
+}
+      
+}
+}
+}
+```
+
+
+#### Short summary: 
+
+empty definition using pc, found symbol in pc: 

@@ -1,6 +1,23 @@
+error id: file://<WORKSPACE>/src/test/scala/lab4/buggedAlutest.scala:
+file://<WORKSPACE>/src/test/scala/lab4/buggedAlutest.scala
+empty definition using pc, found symbol in pc: 
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+	 -chisel3/chisel3.
+	 -chisel3/tester/chisel3.
+	 -chisel3/experimental/BundleLiterals.chisel3.
+	 -chiseltest/experimental/TestOptionBuilder.chisel3.
+	 -ALUOP.chisel3.
+	 -chisel3.
+	 -scala/Predef.chisel3.
+offset: 21
+uri: file://<WORKSPACE>/src/test/scala/lab4/buggedAlutest.scala
+text:
+```scala
 package lab4
 
-import chisel3._
+import @@chisel3._
 import chisel3.tester._
 import org.scalatest.FreeSpec
 import chisel3.experimental.BundleLiterals._
@@ -35,15 +52,15 @@ class buggedAlutest extends FreeSpec with ChiselScalatestTester {
         case ALU_SLL => src_a << ( src_b & 0x1F )
         case ALU_SLTU => if (src_a < src_b) 1 else 0
         case ALU_SRL => src_a >>> ( src_b & 0x1F )
-        case ALU_SRA => src_a.toInt >> ( src_b.toInt & 0x1F )
+        case ALU_SRA => src_a.toInt >> ( src_b & 0x1F )
         case ALU_COPY_A => src_a
         case ALU_COPY_B => src_b
         /* case ALU_MUL => src_a * src_b
         case ALU_DIV => src_a / src_b */ 
         case _ => 0
 }
-        val result1  = if ( result < 0)
-        ((0xFFFFFFFFL) + result +1) & 0xFFFFFFFFL
+        val result1 : BigInt = if ( result < 0)
+        ( BigInt (0xFFFFFFFFL) + result +1) & 0xFFFFFFFFL
         
         else result & 0xFFFFFFFFL
 
@@ -51,5 +68,15 @@ class buggedAlutest extends FreeSpec with ChiselScalatestTester {
         dut.io.in_B.poke(src_b.U)
         dut.io.alu_Op.poke(aluop)
         dut.clock.step(1)
-        dut.io.out.expect(result1.asUInt)  
-}}}}
+        dut.io.out.expect(result1.asUInt)
+}
+        dut.clock.step(2)
+}
+}
+}
+```
+
+
+#### Short summary: 
+
+empty definition using pc, found symbol in pc: 
