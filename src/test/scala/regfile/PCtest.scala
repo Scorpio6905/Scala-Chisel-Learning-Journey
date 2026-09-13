@@ -16,9 +16,8 @@ class PCtest extends FreeSpec with ChiselScalatestTester{
 
             dut.io.PC_OUT.expect(1000.U)
             dut.io.PC_NEXT.expect(1004.U)
+            
 
-            
-            
         }
     }
 }

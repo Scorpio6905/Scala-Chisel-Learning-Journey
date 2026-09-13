@@ -1,3 +1,25 @@
+error id: file://<WORKSPACE>/src/main/scala/regfile/ControlDecode.scala:`<error>`#`<error>`.
+file://<WORKSPACE>/src/main/scala/regfile/ControlDecode.scala
+empty definition using pc, found symbol in pc: 
+empty definition using semanticdb
+empty definition using fallback
+non-local guesses:
+	 -chisel3/Output.
+	 -chisel3/Output#
+	 -chisel3/Output().
+	 -chisel3/util/Output.
+	 -chisel3/util/Output#
+	 -chisel3/util/Output().
+	 -Output.
+	 -Output#
+	 -Output().
+	 -scala/Predef.Output.
+	 -scala/Predef.Output#
+	 -scala/Predef.Output().
+offset: 417
+uri: file://<WORKSPACE>/src/main/scala/regfile/ControlDecode.scala
+text:
+```scala
 package regfile
 import chisel3._
 import chisel3.util._
@@ -15,7 +37,7 @@ class ControlDecode extends Module {
         val JAL = Input(Bool())
         val Lui = Input(Bool())
 
-        val MemWrite = Output(Bool())
+        val MemWrite = @@Output(Bool())
         val BranchOut = Output(Bool())
         val MemRead = Output(Bool())
         val RegWrite = Output(Bool())
@@ -89,3 +111,9 @@ class ControlDecode extends Module {
     io.next_PC_sel := "b00".U
   }
 }
+```
+
+
+#### Short summary: 
+
+empty definition using pc, found symbol in pc: 

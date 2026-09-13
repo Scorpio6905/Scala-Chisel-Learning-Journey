@@ -1,3 +1,4 @@
+package regfile
 import chisel3._
 import chisel3.util._
 
@@ -6,69 +7,59 @@ class InstructionDecode extends Module {
   val io = IO(new Bundle {
     val opcode = Input(UInt(7.W))
 
-    val format = Output(UInt(4.W))
+    val R_Type = Output(Bool())
+    val Load = Output(Bool())
+    val Store = Output(Bool())
+    val Branch = Output(Bool())
+    val I_Type = Output(Bool())
+    val JALR = Output(Bool())
+    val JAL = Output(Bool())
+    val LUI = Output(Bool())
   })
 
-  val R_Type = 0.U(4.W)
-  val Load = 1.U(4.W)
-  val Store = 2.U(4.W)
-  val Branch = 3.U(4.W)
-  val I_Type = 4.U(4.W)
-  val JALR = 5.U(4.W)
-  val JAL = 6.U(4.W)
-  val LUI = 7.U(4.w)
+  io.R_Type := false.B
+  io.Load := false.B
+  io.Store := false.B
+  io.Branch := false.B
+  io.I_Type := false.B
+  io.JALR := false.B
+  io.JAL := false.B
+  io.LUI := false.B
 
- 
-  val opcodeArray = Array(
-    51,   // R-type  
-    19,   // I-type  
-    35,   // Store 
-    99,   // Branch  
-    55,   // LUI
-    111,  // JAL
-    3,    // LOAD
-    103   // JALR
-  )
-
-  // Default = invalid
-  io.format := 0.U
 
   switch(io.opcode) {
 
-    is(opcodeArray(0)) {
-      io.format := R_TYPE
+    is(51.U) {
+      io.R_Type := true.B
     }
 
-    is(opcodeArray(1)) {
-      io.format := I_TYPE
+    is(19.U) {
+      io.I_Type := true.B
     }
 
-    is(opcodeArray(2)) {
-      io.format := Store
+    is(35.U) {
+      io.Store := true.B
     }
 
-    is(opcodeArray(3)) {
-      io.format := Branch
+    is(99.U) {
+      io.Branch := true.B
     }
 
-    is(opcodeArray(4)) {
-      io.format := LUI
+    is(55.U) {
+      io.LUI := true.B
     }
 
-    is(opcodeArray(5)) {
-      io.format := JAL
+    is(111.U) {
+      io.JAL := true.B
     }
 
-    is(opcodeArray(6)) {
-      io.format := LOAD
+    is(3.U) {
+      io.Load := true.B
     }
 
-    is(opcodeArray(7)) {
-      io.format := JALR
+    is(103.U) {
+      io.JALR := true.B
     }
 
-    is(opcodeArray(8)) {
-      io.format := I_TYPE
-    }
   }
 }
