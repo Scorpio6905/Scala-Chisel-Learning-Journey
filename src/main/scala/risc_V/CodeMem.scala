@@ -22,7 +22,7 @@ trait CONFIG {
 class InstMemIO extends Bundle with CONFIG{
     val addr = Input (UInt(WLEN.W))
     val inst = Output (UInt(WLEN.W))
-
+                                       
 }
 
 class InstMem ( initFile : String ) extends Module with CONFIG {

@@ -74,14 +74,14 @@ import scala.util.Random
 //           val result = opcode match { 
 //             // I-Type 
 //             case 0x13 | 0x03 | 0x67 => val immbits = (instruction >> 20) & 0xFFF 
-//             if ((immbits & 0x800) != 0) immbits | 0xFFFFF000 else immbits 
+//             if ((immbits & 0x800) != 0) immbits | 0xFFFFF000 else immbits  
 
 //             // S-Type 
 //             case 0x23 => val imm11_5 = (instruction >> 25) & 0x7F 
 //             val imm4_0 = (instruction >> 7) & 0x1F 
 //             val immbits = (imm11_5 << 5) | imm4_0 
 //             if ((immbits & 0x800) != 0) immbits | 0xFFFFF000 else immbits 
-
+                         
 //             // B-Type 
 //             case 0x63 => val bit12 = (instruction >> 31) & 0x1 
 //             val bit11 = (instruction >> 7) & 0x1 

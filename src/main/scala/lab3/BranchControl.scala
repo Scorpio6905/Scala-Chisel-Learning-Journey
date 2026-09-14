@@ -73,4 +73,3 @@ class BranchControl extends Module {
     }
     
 }
-

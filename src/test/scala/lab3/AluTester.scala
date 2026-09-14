@@ -32,10 +32,10 @@ class AluTester extends FreeSpec with ChiselScalatestTester {
         case ALU_OR => src_a | src_b
         case ALU_XOR => src_a ^ src_b
         case ALU_SLT =>  if (src_a.toInt < src_b.toInt) 1 else 0
-        case ALU_SLL => src_a << ( src_b & 0x1F )
+        case ALU_SLL => src_a.toInt << ( src_b.toInt & 0x1F )
         case ALU_SLTU => if (src_a < src_b) 1 else 0
         case ALU_SRL => src_a >>> ( src_b & 0x1F )
-        case ALU_SRA => src_a.toInt >> ( src_b & 0x1F )
+        case ALU_SRA => src_a.toInt >> ( src_b.toInt & 0x1F )
         case ALU_COPY_A => src_a
         case ALU_COPY_B => src_b
         /* case ALU_MUL => src_a * src_b

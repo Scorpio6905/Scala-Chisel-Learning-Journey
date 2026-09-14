@@ -25,7 +25,6 @@ class regfiletest extends FreeSpec with ChiselScalatestTester{
             dut.clock.step(1)        
             dut.io.rdata2.expect(90.U)
             
-
         }
 
     }

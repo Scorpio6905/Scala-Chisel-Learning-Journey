@@ -27,4 +27,3 @@ class Asynch_Mem extends Module {
 // Asyncronous read from addr location
     io.data_out := memory.read(io.addr)
 }
-
